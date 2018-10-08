@@ -14,6 +14,14 @@ Album CSS
     padding-top: 30px;
 }
 
+.movie-description {
+    margin-top: 10px;
+}
+
+.movie-tags {
+    margin-right: 05px;
+}
+
 :root {
     --jumbotron-padding-y: 3rem;
 }

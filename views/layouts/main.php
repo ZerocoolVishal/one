@@ -45,7 +45,7 @@ AppAsset::register($this);
                         <?=Html::a('Movies & Series', ['movies'], ['class' => 'nav-link'])?>
                     </li>
                     <li>
-                        <?=Html::a('Search', ['search'], ['class' => 'nav-link'])?>
+                        <?=Html::a('Index', ['search'], ['class' => 'nav-link'])?>
                     </li>
                 </ul>
             </div>

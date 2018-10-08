@@ -4,7 +4,9 @@ namespace app\controllers;
 
 use app\models\Content;
 use app\models\Message;
+use app\models\Tags;
 use Yii;
+use yii\db\Query;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -72,9 +74,25 @@ class SiteController extends Controller
         if(isset($req['search'])) {
             $data['movies'] = Content::find()->where(['title' => $req['search']])->all();
         }
+        elseif(isset($req['lang'])) {
+            $data['movies'] = Content::find()->where(['language' => $req['lang']])->all();
+        }
+        elseif(isset($req['tag'])) {
+            $res = (new Query())
+                ->select(['id'])
+                ->from('content')
+                ->limit(3)
+                ->all();
+
+            echo "<pre>";
+            print_r($res);
+            echo "</pre>";
+            return;
+        }
         else {
             $data['movies'] = Content::find()->all();
         }
+
         return $this->render('movies', $data);
     }
 

@@ -11,9 +11,9 @@
     <h1>Search 🔍</h1>
     <form action="movies/" method="get" style="width: 100%">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Movies & Series" name="search" aria-describedby="button-addon2">
+            <input type="text" class="form-control" required="" placeholder="Movies & Series" name="search" aria-describedby="button-addon2">
             <div class="input-group-append">
-                <input type="submit" class="btn btn-outline-success" type="button" id="button-addon2">
+                <input type="submit" class="btn btn-success" type="button" value="Search" id="button-addon2">
             </div>
         </div>
     </form>

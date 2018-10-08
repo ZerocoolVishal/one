@@ -6,6 +6,8 @@
  * Time: 7:20 PM
  */
 
+$this->title = "Index - List of all movies and series we have - prox download your entertainment";
+
 $movies = \app\models\Content::find()->all();
 ?>
 
@@ -15,7 +17,7 @@ $movies = \app\models\Content::find()->all();
         <p class="text-muted">All movies we have, if you dont find movie in the index please make a request 👉<a href="#request_movie">here</a> for that movie and we will make that available.</p>
 
         <div style="margin:30px">
-            <input type="text" class="form-control" id="name" onkeyup="myFunction()" placeholder="Search for title.." title="Search for movies and series">
+            <input type="text" class="form-control" id="movieName" placeholder="Search for title.." title="Search for movies and series">
         </div>
         <table class="table table-striped table-borderless" id="movie_list">
             <thead>

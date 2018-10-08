@@ -13,7 +13,8 @@ use Yii;
  * @property string $image
  * @property string $date
  * @property int $category
- * @property int $launchYear
+ * @property string $language
+ * @property string $launchYear
  *
  * @property Category $category0
  * @property ContentTags[] $contentTags
@@ -35,10 +36,10 @@ class Content extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'image', 'date', 'category', 'launchYear'], 'required'],
-            [['date'], 'safe'],
-            [['category', 'launchYear'], 'integer'],
-            [['title'], 'string', 'max' => 100],
+            [['title', 'description', 'image', 'date', 'category', 'language', 'launchYear'], 'required'],
+            [['date', 'launchYear'], 'safe'],
+            [['category'], 'integer'],
+            [['title', 'language'], 'string', 'max' => 100],
             [['description', 'image'], 'string', 'max' => 1000],
             [['category'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category' => 'id']],
         ];
@@ -56,6 +57,7 @@ class Content extends \yii\db\ActiveRecord
             'image' => 'Image',
             'date' => 'Date',
             'category' => 'Category',
+            'language' => 'Language',
             'launchYear' => 'Launch Year',
         ];
     }

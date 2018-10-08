@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'Home';
+$this->title = 'Home - prox download your entertainment';
 
 $categories = \app\models\Category::find()->all();
 ?>
@@ -31,8 +31,14 @@ $categories = \app\models\Category::find()->all();
                         <div class="card mb-4 box-shadow">
                             <img class="card-img-top" src="<?=$movie->image?>" alt="Card image cap">
                             <div class="card-body">
-                                <h2 class="card-title"><?=$movie->title?></h2>
-                                <p class="card-text"><?=$movie->description?></p>
+                                <h2 class="card-title"><?=$movie->title?></h2><span class="badge badge-light"><?=$movie->language?></span>
+                                <?php
+                                foreach ($movie->contentTags as $contentTag) {
+                                    $tag = $contentTag->tag0;
+                                    echo "<span class=\"badge badge-pill badge-secondary movie-tags\">$tag->name</span>";
+                                };
+                                ?>
+                                <p class="card-text movie-description"><?=$movie->description?></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
 
