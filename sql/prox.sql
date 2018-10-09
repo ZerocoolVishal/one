@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 06, 2018 at 02:39 PM
+-- Generation Time: Oct 09, 2018 at 07:57 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -33,6 +33,16 @@ CREATE TABLE `category` (
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `name`) VALUES
+(1, 'Hollywood'),
+(2, 'Bollywood'),
+(3, 'Webseries'),
+(4, 'Marathi');
+
 -- --------------------------------------------------------
 
 --
@@ -43,9 +53,11 @@ CREATE TABLE `content` (
   `id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `description` varchar(1000) NOT NULL,
+  `image` varchar(1000) NOT NULL,
   `date` date NOT NULL,
   `category` int(11) NOT NULL,
-  `launchYear` bigint(20) NOT NULL
+  `language` varchar(100) NOT NULL,
+  `launchYear` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -68,9 +80,10 @@ CREATE TABLE `contentTags` (
 
 CREATE TABLE `links` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
+  `name` enum('Trailer','Download','Download 720p','Download 1080p','Download UHD','Download 4K','Coming Soon') NOT NULL,
   `url` varchar(1000) NOT NULL,
-  `content` int(11) NOT NULL
+  `content` int(11) NOT NULL,
+  `clicks` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -81,7 +94,7 @@ CREATE TABLE `links` (
 
 CREATE TABLE `message` (
   `id` int(11) NOT NULL,
-  `email` varchar(100) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
   `message` varchar(1000) NOT NULL,
   `timeStamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -96,6 +109,16 @@ CREATE TABLE `tags` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`id`, `name`) VALUES
+(1, 'action'),
+(2, 'bollywood'),
+(3, 'marvel'),
+(4, 'sci-fi');
 
 --
 -- Indexes for dumped tables
@@ -149,7 +172,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `content`
@@ -179,7 +202,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
