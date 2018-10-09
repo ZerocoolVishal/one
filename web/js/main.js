@@ -30,6 +30,20 @@ $(document).ready(function () {
                 }
             }
         }
-    })
+    });
 
 });
+
+function linkckicked(link) {
+    if(link == '%23') {
+        console.log('done');
+        return;
+    }
+    $.post('clicks',
+        {
+            url: link
+        },
+        function (data, status) {
+               console.log(data);
+    });
+}

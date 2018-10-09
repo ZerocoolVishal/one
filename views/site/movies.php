@@ -9,6 +9,8 @@
 $this->title='Movies & Series - Download your favourite movies and series';
 
 $tags = \app\models\Tags::find()->all();
+$categories = \app\models\Category::find()->all();
+
 ?>
 
 <div style="text-align: center;">
@@ -18,6 +20,17 @@ $tags = \app\models\Tags::find()->all();
 </div>
 
 <?php include "components/searchbox.php";?>
+
+<div class="row mt-5 mb-5 text-center bg-dark" style="padding: 40px">
+    <?php foreach ($categories as $category) { ?>
+    <div class="col">
+        <a class="btn btn-lg btn-outline-light" style="margin-top: 10px; margin-bottom: 10px;" href="?category=<?=$category->name?>">
+            <?= $category->name ?>
+            <!--<img height="100px" src="https://www.espectalium.com/wp-content/uploads/2014/12/bollywood-para-eventos-1.jpg" alt="Bollywood" class="rounded">-->
+        </a>
+    </div>
+    <?php } ?>
+</div>
 
 <div class="bg-light" style="text-align: center; margin-top: 50px; padding: 30px">
     <h1 style="margin-bottom: 20px">Tags</h1>
@@ -32,46 +45,9 @@ $tags = \app\models\Tags::find()->all();
 
     <?php
     if($movies) {
-        foreach ($movies as $movie) {?>
-
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" src="<?=$movie->image?>" alt="Card image cap">
-                    <div class="card-body">
-                        <h2 class="card-title"><?=$movie->title?></h2><span class="badge badge-light"><?=$movie->language?></span>
-                        <?php
-                        foreach ($movie->contentTags as $contentTag) {
-                            $tag = $contentTag->tag0;
-                            echo "<span class=\"badge badge-pill badge-secondary movie-tags\">$tag->name</span>";
-                        };
-                        ?>
-                        <p class="card-text movie-description"><?=$movie->description?></p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-
-                                <?php
-                                    foreach($movie->links as $link) {
-                                        $url = $link->url;
-                                        $name = $link->name;
-
-                                        if($name == "Trailer") {
-                                            echo "<a class=\"btn btn-sm btn-outline-success\" href=\"$url\" target=\"_blank\">$name</a>";
-                                            continue;
-                                        }
-                                        if($name == "Coming Soon") {
-                                            echo "<button class=\"btn btn-sm btn-outline-secondary\">$name</button>";
-                                            continue;
-                                        }
-                                        echo "<a class=\"btn btn-sm btn-outline-primary\" href=\"$url\" target=\"_blank\">$name</a>";
-                                    }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        <?php }
+        foreach ($movies as $movie) {
+            echo $this->context->renderPartial('components/_card', ['movie' => $movie]);
+        }
     }
     else {
         echo "<h1>Sorry!! Not available 😞</h1>";

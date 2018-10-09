@@ -2,10 +2,13 @@
 
 namespace app\controllers;
 
+use app\models\Category;
 use app\models\Content;
+use app\models\Links;
 use app\models\Message;
 use app\models\Tags;
 use Yii;
+use yii\data\Pagination;
 use yii\db\Query;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -77,6 +80,15 @@ class SiteController extends Controller
         elseif(isset($req['lang'])) {
             $data['movies'] = Content::find()->where(['language' => $req['lang']])->all();
         }
+        elseif(isset($req['category'])) {
+            $category = Category::find()->where(['name' => $req['category']])->one();
+            if($category) {
+                $data['movies'] = $category->contents;
+            }
+            else {
+                $data['movies'] = Content::find()->all();
+            }
+        }
         elseif(isset($req['tag'])) {
             $res = (new Query())
                 ->select(['id'])
@@ -117,5 +129,38 @@ class SiteController extends Controller
                 echo "Due to some problem your message was not able to send !!";
             }
         }
+    }
+
+    public function actionClicks()
+    {
+        $req = Yii::$app->request->post();
+        if(isset($req['url'])) {
+            $link = Links::find()->where(['url' => urldecode($req['url'])])->one();
+            if($link) {
+                $link->clicks += 1;
+                $res = $link->save();
+                echo urldecode($req['url'])." $res";
+            }
+        }
+    }
+
+    public function actionDemo()
+    {
+        $query = Content::find();
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count()]);
+        $models = $query->offset($pages->offset)
+            ->limit(3)
+            ->all();
+
+        return $this->render('demo', [
+            'models' => $models,
+            'pages' => $pages,
+        ]);
+    }
+
+    public function actionTest()
+    {
+        return $this->render('components/demo', ['name' => 'Vishal']);
     }
 }

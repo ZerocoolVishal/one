@@ -11,6 +11,7 @@ use Yii;
  * @property string $name
  * @property string $url
  * @property int $content
+ * @property int $clicks
  *
  * @property Content $content0
  */
@@ -31,8 +32,8 @@ class Links extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'url', 'content'], 'required'],
-            [['content'], 'integer'],
-            [['name'], 'string', 'max' => 100],
+            [['name'], 'string'],
+            [['content', 'clicks'], 'integer'],
             [['url'], 'string', 'max' => 1000],
             [['content'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content' => 'id']],
         ];
@@ -48,6 +49,7 @@ class Links extends \yii\db\ActiveRecord
             'name' => 'Name',
             'url' => 'Url',
             'content' => 'Content',
+            'clicks' => 'Clicks',
         ];
     }
 

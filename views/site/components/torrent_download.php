@@ -7,7 +7,7 @@
  */
 ?>
 
-<div class="jumbotron mt-3 bg-light">
+<div class="jumbotron mt-5 bg-light">
     <h1>Download BitTorrent</h1>
     <p class="lead">
         To download the movies you will require BitTorrent,

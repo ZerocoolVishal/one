@@ -26,6 +26,7 @@ $movies = \app\models\Content::find()->all();
                 <th scope="col">title</th>
                 <th scope="col">type</th>
                 <th scope="col">year</th>
+                <th scope="col">Language</th>
                 <th scope="col">links</th>
             </tr>
             </thead>
@@ -40,9 +41,11 @@ $movies = \app\models\Content::find()->all();
                         $categoryName = $movie->category0->name;
                         echo "<td scope=\"col\">$categoryName</td>";
                         echo "<td scope=\"col\">$movie->launchYear</td>";
+                        echo "<td scope=\"col\">$movie->language</td>";
                         echo "<td scope=\"col\">";
                             foreach ($movie->links as $link) {
-                                echo "<a href='$link->url' style='margin-right: 10px' target='_blank'>$link->name</a>";
+                                $urlenc = urlencode($link->url);
+                                echo "<a href='$link->url' style='margin-right: 10px' onclick='linkckicked(\"$urlenc\")' target='_blank'>$link->name</a>";
                             }
                         echo "</td>";
                         echo "</tr>";
