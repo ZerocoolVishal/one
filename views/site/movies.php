@@ -53,9 +53,8 @@ $categories = \app\models\Category::find()->all();
         echo "<h1>Sorry!! Not available 😞</h1>";
         echo \yii\helpers\Html::a('See what we have', ['movies']);
     }
-
-    include "components/request_movie.php";
-
     ?>
 
 </div>
+
+<?= $this->render('components/request_movie.php'); ?>

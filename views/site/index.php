@@ -7,8 +7,6 @@ $this->title = 'Home - prox download your entertainment';
 $categories = \app\models\Category::find()->all();
 ?>
 
-<?= $this->render('components/demo', ['name' => 'Vishal']) ?>
-
 <div style="text-align: center;">
     <h1 class="title"><?=Yii::$app->name?></h1>
     <h4  class="text-muted">free movies and series 👻</h4>
@@ -17,14 +15,14 @@ $categories = \app\models\Category::find()->all();
 
 <?php
 
-    echo $this->context->renderPartial('components/searchbox');
+    echo $this->render('components/searchbox');
 
-    echo $this->context->renderPartial('components/torrent_download');
+    echo $this->render('components/torrent_download');
 
     if($categories) {
         foreach ($categories as $category) {
 
-            echo "<div class='row'>";
+            echo "<div class='row' style='margin: 0px'>";
 
                 echo "<div class=\"category-title\"><h1>$category->name</h1></div>";
                 echo "<div class=\"row\">";
@@ -37,6 +35,6 @@ $categories = \app\models\Category::find()->all();
             echo "</div>";
         }
     }
-?>
 
-<?php include "components/request_movie.php"; ?>
+    echo $this->render("components/request_movie.php");
+?>
