@@ -15,6 +15,7 @@ use Yii;
  * @property int $category
  * @property string $language
  * @property string $launchYear
+ * @property string $timestamp
  *
  * @property Category $category0
  * @property ContentTags[] $contentTags
@@ -37,7 +38,7 @@ class Content extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'description', 'image', 'date', 'category', 'language', 'launchYear'], 'required'],
-            [['date', 'launchYear'], 'safe'],
+            [['date', 'launchYear', 'timestamp'], 'safe'],
             [['category'], 'integer'],
             [['title', 'language'], 'string', 'max' => 100],
             [['description', 'image'], 'string', 'max' => 1000],
@@ -59,6 +60,7 @@ class Content extends \yii\db\ActiveRecord
             'category' => 'Category',
             'language' => 'Language',
             'launchYear' => 'Launch Year',
+            'timestamp' => 'Timestamp',
         ];
     }
 

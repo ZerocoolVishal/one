@@ -15,9 +15,9 @@ $categories = \app\models\Category::find()->all();
 
 <?php
 
-    echo $this->render('components/searchbox');
+    echo $this->render('components/_searchbox');
 
-    echo $this->render('components/torrent_download');
+    echo $this->render('components/_torrent_download');
 
     if($categories) {
         foreach ($categories as $category) {
@@ -36,5 +36,5 @@ $categories = \app\models\Category::find()->all();
         }
     }
 
-    echo $this->render("components/request_movie.php");
+    echo $this->render("components/_request_movie.php");
 ?>

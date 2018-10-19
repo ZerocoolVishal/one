@@ -19,7 +19,7 @@ $movies = \app\models\Content::find()->all();
         <div style="margin:30px">
             <input type="text" class="form-control" id="movieName" placeholder="Search for title.." title="Search for movies and series">
         </div>
-        <table class="table table-striped table-borderless" id="movie_list">
+        <table class="table table-striped table-borderless" style="overflow-x: scroll; display: block;" id="movie_list">
             <thead>
             <tr>
                 <th scope="col">#</th>
@@ -57,7 +57,7 @@ $movies = \app\models\Content::find()->all();
         </table>
 
         <div id="request_movie" style="padding-top:30px; padding-bottom:30px;">
-            <?php include "components/request_movie.php"?>
+            <?php include "components/_request_movie.php"?>
         </div>
     </div>
 </div>

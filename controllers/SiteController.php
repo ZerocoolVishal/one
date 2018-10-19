@@ -102,7 +102,7 @@ class SiteController extends Controller
             return;
         }
         else {
-            $data['movies'] = Content::find()->all();
+            $data['movies'] = Content::find()->orderBy(['timestamp' => SORT_DESC])->all();
         }
 
         return $this->render('movies', $data);

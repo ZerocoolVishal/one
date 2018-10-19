@@ -4,6 +4,9 @@
  * User: vishal
  * Date: 5/10/18
  * Time: 7:00 PM
+ *
+ * @var $movies : from siteController
+ *
  */
 
 $this->title='Movies & Series - Download your favourite movies and series';
@@ -19,7 +22,7 @@ $categories = \app\models\Category::find()->all();
     <hr width="200px">
 </div>
 
-<?php include "components/searchbox.php";?>
+<?= $this->render('components/_searchbox') ?>
 
 <div class="row mt-5 mb-5 text-center bg-dark" style="padding: 40px">
     <?php foreach ($categories as $category) { ?>
@@ -57,4 +60,4 @@ $categories = \app\models\Category::find()->all();
 
 </div>
 
-<?= $this->render('components/request_movie.php'); ?>
+<?= $this->render('components/_request_movie.php'); ?>
