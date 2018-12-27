@@ -16,6 +16,8 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Languages;
+use yii\data\Sort;
 
 class SiteController extends Controller
 {
@@ -70,42 +72,58 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
-
+    
     public function actionMovies()
     {
+        $size = 16;
+        $offset = 0;
+        $page = 0;
+
         $req = Yii::$app->request->get();
+
+        $query = Content::find();
+
         if(isset($req['search'])) {
-            $data['movies'] = Content::find()->where(['title' => $req['search']])->all();
+            $query = $query->andWhere(['title' => trim($req['search'])]);
         }
-        elseif(isset($req['lang'])) {
-            $data['movies'] = Content::find()->where(['language' => $req['lang']])->all();
+
+        if(isset($req['lang'])) {
+            $language = Languages::find()->where(['name' => $req['lang']])->one();
+            if($language) $query = $query->andWhere(['language_id' => $language->id]);
         }
-        elseif(isset($req['category'])) {
+
+        if(isset($req['category'])) {
             $category = Category::find()->where(['name' => $req['category']])->one();
             if($category) {
-                $data['movies'] = $category->contents;
-            }
-            else {
-                $data['movies'] = Content::find()->all();
+                $query = $query->andWhere(['category' => $category->id]);
             }
         }
-        elseif(isset($req['tag'])) {
-            $res = (new Query())
-                ->select(['id'])
-                ->from('content')
-                ->limit(3)
-                ->all();
+        //@TODO: Implement this part properly 
+        /*if(isset($req['tag'])) {
+            
+        }/*
 
-            echo "<pre>";
-            print_r($res);
-            echo "</pre>";
-            return;
-        }
-        else {
+        /*else {
             $data['movies'] = Content::find()->orderBy(['timestamp' => SORT_DESC])->all();
+        }*/
+        
+        if(isset($req['page'])) {
+            $page = $req['page'];
+            $offset = (int) $page * $size;
         }
 
-        return $this->render('movies', $data);
+        $count = ceil($query->count() / $size);
+
+        $movies = $query->offset($offset)
+                        ->limit($size)
+                        ->orderBy(['launchYear' => SORT_DESC])
+                        ->all();
+
+        return $this->render('movies', [
+            'movies' => $movies,
+            'page' => $page,
+            'count' => $count
+        ]);
     }
 
     public function actionSearch()
@@ -129,6 +147,20 @@ class SiteController extends Controller
                 echo "Due to some problem your message was not able to send !!";
             }
         }
+    }
+
+    public function actionFeedBack()
+    {
+        $message = new Message();
+        //$req = Yii::$app->request->post();
+        $req = ['Message' => Yii::$app->request->post()];
+        if($message->load($req)) {
+            if($message->validate()) {
+                $message->save();
+                return $this->render('thankyou');
+            }
+        }
+        return "Message Not send";
     }
 
     public function actionClicks()

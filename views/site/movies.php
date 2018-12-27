@@ -9,42 +9,50 @@
  *
  */
 
-$this->title='Movies & Series - Download your favourite movies and series';
+ use yii\helpers\Html;
+ use yii\widgets\LinkPager;
 
-$tags = \app\models\Tags::find()->all();
-$categories = \app\models\Category::find()->all();
+ $this->title='Movies & Series - Download your favourite movies and series';
 
 ?>
 
-<div style="text-align: center;">
+<!--<div style="text-align: center;">
     <h1>Movies & Series</h1>
-    <h4  class="text-muted">free movies and series 👻</h4>
+    <h4  class="text-muted">HD Movies & Series at smallest file size 👻</h4>
     <hr width="200px">
-</div>
+</div>-->
 
 <?= $this->render('components/_searchbox') ?>
 
-<div class="row mt-5 mb-5 text-center bg-dark" style="padding: 40px">
-    <?php foreach ($categories as $category) { ?>
-    <div class="col">
-        <a class="btn btn-lg btn-outline-light" style="margin-top: 10px; margin-bottom: 10px;" href="?category=<?=$category->name?>">
-            <?= $category->name ?>
-            <!--<img height="100px" src="https://www.espectalium.com/wp-content/uploads/2014/12/bollywood-para-eventos-1.jpg" alt="Bollywood" class="rounded">-->
-        </a>
-    </div>
-    <?php } ?>
-</div>
+<?= $this->render('components/_languages') ?>
 
-<div class="bg-light" style="text-align: center; margin-top: 50px; padding: 30px">
-    <h1 style="margin-bottom: 20px">Tags</h1>
-    <?php
-    foreach ($tags as $tag) {
-        echo "<a href=\"?tag=$tag->name\"><span style='font-size: large; margin-right: 20px;' class=\"badge badge-info\">#$tag->name</span></a>";
-    }
-    ?>
-</div>
+<?= $this->render('components/_categories') ?>
 
-<div class="row movies-row" style="margin-top: 50px">
+<?= $this->render('components/_tags') ?>
+
+<nav class="mt-5">
+  <ul class="pagination justify-content-center">
+    <li class="page-item <?= ($page == 0)? "disabled" : "" ?>">
+        <a class="page-link" href="?page=<?= $page - 1 ?>">Previous</a>
+    </li>
+    <?php for($i = 0; $i < $count; $i++): ?>
+        <?php if((int)$page == $i): ?>
+            <li class="page-item active" aria-current="page">
+                <span class="page-link"><?= $i + 1 ?><span class="sr-only">(current)</span></span>
+            </li>
+        <?php else: ?>
+            <li class="page-item">
+                <a class="page-link" href="?page=<?= $i ?>"><?= $i + 1 ?></a>
+            </li>
+        <?php endif; ?>
+    <?php endfor; ?>
+    <li class="page-item <?= ($page == $count - 1)? "disabled" : "" ?>">
+        <a class="page-link" href="?page=<?= $page + 1 ?>">Next</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="row movies-row mt-5">
 
     <?php
     if($movies) {
@@ -59,5 +67,27 @@ $categories = \app\models\Category::find()->all();
     ?>
 
 </div>
+
+<nav class="mt-5">
+  <ul class="pagination justify-content-center">
+    <li class="page-item <?= ($page == 0)? "disabled" : "" ?>">
+        <a class="page-link" href="?page=<?= $page - 1 ?>">Previous</a>
+    </li>
+    <?php for($i = 0; $i < $count; $i++): ?>
+        <?php if((int)$page == $i): ?>
+            <li class="page-item active" aria-current="page">
+                <span class="page-link"><?= $i + 1 ?><span class="sr-only">(current)</span></span>
+            </li>
+        <?php else: ?>
+            <li class="page-item">
+                <a class="page-link" href="?page=<?= $i ?>"><?= $i + 1 ?></a>
+            </li>
+        <?php endif; ?>
+    <?php endfor; ?>
+    <li class="page-item <?= ($page == $count - 1)? "disabled" : "" ?>">
+        <a class="page-link" href="?page=<?= $page + 1 ?>">Next</a>
+    </li>
+  </ul>
+</nav>
 
 <?= $this->render('components/_request_movie.php'); ?>

@@ -13,11 +13,12 @@ use Yii;
  * @property string $image
  * @property string $date
  * @property int $category
- * @property string $language
+ * @property int $language_id
  * @property string $launchYear
  * @property string $timestamp
  *
  * @property Category $category0
+ * @property Languages $language
  * @property ContentTags[] $contentTags
  * @property Links[] $links
  */
@@ -37,12 +38,13 @@ class Content extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'image', 'date', 'category', 'language', 'launchYear'], 'required'],
+            [['title', 'description', 'image', 'date', 'category', 'language_id', 'launchYear'], 'required'],
             [['date', 'launchYear', 'timestamp'], 'safe'],
-            [['category'], 'integer'],
-            [['title', 'language'], 'string', 'max' => 100],
+            [['category', 'language_id'], 'integer'],
+            [['title'], 'string', 'max' => 100],
             [['description', 'image'], 'string', 'max' => 1000],
             [['category'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category' => 'id']],
+            [['language_id'], 'exist', 'skipOnError' => true, 'targetClass' => Languages::className(), 'targetAttribute' => ['language_id' => 'id']],
         ];
     }
 
@@ -58,7 +60,7 @@ class Content extends \yii\db\ActiveRecord
             'image' => 'Image',
             'date' => 'Date',
             'category' => 'Category',
-            'language' => 'Language',
+            'language_id' => 'Language ID',
             'launchYear' => 'Launch Year',
             'timestamp' => 'Timestamp',
         ];
@@ -70,6 +72,14 @@ class Content extends \yii\db\ActiveRecord
     public function getCategory0()
     {
         return $this->hasOne(Category::className(), ['id' => 'category']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLanguage()
+    {
+        return $this->hasOne(Languages::className(), ['id' => 'language_id']);
     }
 
     /**

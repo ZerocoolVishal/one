@@ -7,22 +7,31 @@
  */
 
 $this->registerCss("
-    .shadow:hover{
-        box-shadow: none !important;
+    .content-card:hover{
+       box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    }
+    
+    .content-card {
+        border-radius: 10px;
+    }
+    
+    .content-card img {
+        border-radius: 10px 10px 0px 0px;
     }
 ");
 ?>
 
-<div class="col-md-3">
-    <div class="card mb-4 shadow content-card">
-        <img class="card-img-top" src="<?=$movie->image?>" alt="Card image cap">
+<div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="card mb-4 content-card">
+        <a data-toggle="collapse" href="#collapse<?=$movie->id?>">
+            <img class="card-img-top" src="<?=$movie->image?>" alt="Card image cap">
+        </a>
         <div class="card-body">
-            <a class="btn btn-outline-dark btn-block" data-toggle="collapse" href="#collapse<?=$movie->id?>" role="button" aria-expanded="false" aria-controls="collapseExample">
-                More info
-            </a>
-            <h4 class="card-title mt-3"><?=$movie->title?></h4>
+            <!--<a class="btn btn-block text-dark" data-toggle="collapse" href="#collapse<?=$movie->id?>" role="button" aria-expanded="false" aria-controls="collapseExample">-->
+            <div class="card-title mt-0"><b><?=$movie->title?></b> <span class="text-muted">(<?= $movie->launchYear ?>)</span></div>
+            <!--</a>-->
             <div class="collapse" id="collapse<?=$movie->id?>">
-                <span class="badge badge-light"><?=$movie->language?></span>
+                <span class="badge badge-light"><?=$movie->language->name?></span>
                 <?php
                 foreach ($movie->contentTags as $contentTag) {
                     $tag = $contentTag->tag0;

@@ -9,6 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -19,8 +20,10 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="<?= Url::to('@web/images/icons/icon-512x512.png') ?>" type="image/gif">
+    <link rel="manifest" href="manifest.json">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title> <?= Yii::$app->name ?> : <?= Html::encode($this->title) ?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <?php $this->head() ?>
 </head>
@@ -31,7 +34,7 @@ AppAsset::register($this);
 
     <header>
         <nav class="navbar navbar-expand-sm navbar-light">
-            <a class="navbar-brand" href="#"><?= Yii::$app->name ?></a>
+            <a class="navbar-brand" href="<?= Url::to(['site/']) ?>"><?= Yii::$app->name ?></a>
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -43,9 +46,6 @@ AppAsset::register($this);
                     </li>
                     <li class="nav-item">
                         <?=Html::a('Movies & Series', ['movies'], ['class' => 'nav-link'])?>
-                    </li>
-                    <li>
-                        <?=Html::a('Index', ['search'], ['class' => 'nav-link'])?>
                     </li>
                 </ul>
             </div>
@@ -63,7 +63,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; One <?= date('Y') ?></p>
+        <p class="pull-left">&copy; <?= Yii::$app->name ?> <?= date('Y')?>, Made with ☕ & ❤️</p>
     </div>
 </footer>
 

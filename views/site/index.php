@@ -9,7 +9,7 @@ $categories = \app\models\Category::find()->all();
 
 <div style="text-align: center;">
     <h1 class="title"><?=Yii::$app->name?></h1>
-    <h4  class="text-muted">free movies and series 👻</h4>
+    <h4  class="text-muted">HD Movies & Series at smallest file size 👻</h4>
     <hr width="200px">
 </div>
 
@@ -28,7 +28,7 @@ $categories = \app\models\Category::find()->all();
                 echo "<div class=\"row\">";
 
                 foreach ($category->contents as $movie) {
-                    echo $this->context->renderPartial('components/_card', ['movie' => $movie]);
+                    echo $this->render('components/_card', ['movie' => $movie]);
                 }
                 echo "</div>";
 
