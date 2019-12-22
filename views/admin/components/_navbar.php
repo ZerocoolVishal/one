@@ -9,8 +9,9 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <?= Html::a('Statics', ['admin/stats'], ['class' => 'nav-item nav-link']) ?>
-      <?= Html::a('Logout', ['admin/logout'], ['class' => 'nav-item nav-link']) ?>
+        <?= Html::a('Statics', ['admin/stats'], ['class' => 'nav-item nav-link']) ?>
+        <?= Html::a('Movies', ['movies/index'], ['class' => 'nav-item nav-link']) ?>
+        <?= Html::a('Logout', ['admin/logout'], ['class' => 'nav-item nav-link']) ?>
     </div>
   </div>
 </nav>

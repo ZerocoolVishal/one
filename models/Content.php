@@ -60,7 +60,7 @@ class Content extends \yii\db\ActiveRecord
             'image' => 'Image',
             'date' => 'Date',
             'category' => 'Category',
-            'language_id' => 'Language ID',
+            'language_id' => 'Language',
             'launchYear' => 'Launch Year',
             'timestamp' => 'Timestamp',
         ];

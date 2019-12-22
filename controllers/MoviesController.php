@@ -14,6 +14,16 @@ use yii\filters\VerbFilter;
  */
 class MoviesController extends Controller
 {
+    public function beforeAction($action)
+    {
+        if(Yii::$app->user->isGuest) {
+            return false;
+        }
+
+        return true;
+    }
+
+
     /**
      * {@inheritdoc}
      */
@@ -37,6 +47,9 @@ class MoviesController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Content::find(),
+            'pagination' => [
+                'pageSize' => 5,
+            ],
         ]);
 
         return $this->render('index', [

@@ -1,5 +1,8 @@
 <?php
 
+use app\models\Category;
+use app\models\Languages;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -14,19 +17,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'description')->textarea(['maxlength' => true, 'rows' => '5']) ?>
 
     <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'date')->textInput() ?>
+    <?= $form->field($model, 'date')->textInput(['type' => 'date']) ?>
 
-    <?= $form->field($model, 'category')->textInput() ?>
+    <?= $form->field($model, 'category')->dropDownList(ArrayHelper::map(Category::find()->all(), 'id', 'name')) ?>
 
-    <?= $form->field($model, 'language_id')->textInput() ?>
+    <?= $form->field($model, 'language_id')->dropDownList(ArrayHelper::map(Languages::find()->all(), 'id', 'name')) ?>
 
-    <?= $form->field($model, 'launchYear')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'timestamp')->textInput() ?>
+    <?= $form->field($model, 'launchYear')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

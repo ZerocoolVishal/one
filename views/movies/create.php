@@ -7,10 +7,11 @@ use yii\helpers\Html;
 /* @var $model app\models\Content */
 
 $this->title = 'Create Content';
-$this->params['breadcrumbs'][] = ['label' => 'Contents', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="content-create">
+
+<?= $this->render('../admin/components/_navbar') ?>
+
+<div class="content-create shadow p-5 rounded">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

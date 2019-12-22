@@ -2,14 +2,34 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\LinkPager;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Contents';
-$this->params['breadcrumbs'][] = $this->title;
+
+$this->registerCss("
+    .pagination li {
+        color: black;
+        padding: 10px;
+        margin-right: 10px;
+        margin-left; 10px;
+    }
+    
+    .pagination a {
+        color: black;
+        
+    }
+    
+    .active a {
+        font-weight:bold;
+    }
+");
 ?>
 <div class="content-index">
+
+    <?= $this->render('../admin/components/_navbar') ?>
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -21,18 +41,36 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            [
+                'attribute' => 'image',
+                'format' => 'html',
+                'value' => function ($data) {
+                    return Html::img($data['image'],
+                        ['width' => '70px']);
+                },
+            ],
             'title',
             'description',
-            'image',
             'date',
             //'category',
             //'language_id',
             //'launchYear',
-            //'timestamp',
+            'timestamp',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                    'class' => 'yii\grid\ActionColumn',
+                    'buttons' => [
+                            'view' => function($url, $model) {
+                                return Html::a('View', ['movies/view', 'id' => $model->id]);
+                            },
+                            'update' => function($url, $model) {
+                                return Html::a('Update', ['movies/update', 'id' => $model->id]);
+                            },
+                            'delete' => function($url, $model) {
+                                return Html::a('Delete', ['movies/delete', 'id' => $model->id], ['data' => ['method' => 'POST']]);
+                            }
+                    ]
+            ],
         ],
     ]); ?>
 </div>

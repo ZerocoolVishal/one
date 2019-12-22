@@ -7,10 +7,11 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Content */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Contents', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="content-view">
+
+<?= $this->render('../admin/components/_navbar') ?>
+
+<div class="content-view p-5 shadow">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -28,13 +29,31 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            //'id',
+            [
+                    'attribute' => 'image',
+                    'format' => 'html',
+                    'value' => function($data) {
+                        return Html::img($data['image'], ['width' => '100px']);
+                    }
+            ],
             'title',
             'description',
-            'image',
             'date',
-            'category',
-            'language_id',
+            [
+                    'attribute' => 'category',
+                    'format' => 'html',
+                    'value' => function($data) {
+                        return $data['category0']->name;
+                    }
+            ],
+            [
+                    'attribute' => 'language_id',
+                    'format' => 'html',
+                    'value' => function($data) {
+                        return $data['language']->name;
+                    },
+            ],
             'launchYear',
             'timestamp',
         ],
