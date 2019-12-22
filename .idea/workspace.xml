@@ -2,7 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62894819-5647-4fb1-9073-782438d6a3db" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/controllers/LinksController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/links/_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/links/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/links/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/links/update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/links/view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/MoviesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/MoviesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/components/_navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/components/_navbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/stats.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/stats.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/movies/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/movies/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/movies/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/movies/view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/site/components/_card.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/components/_card.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/site/components/_categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/components/_categories.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/site/components/_languages.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/components/_languages.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/site/components/_tags.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/components/_tags.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/site/movies.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/movies.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -108,12 +125,16 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1VL9bqyzBjWBY5IXlSQrp3GBRH4" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -149,7 +170,7 @@
       <workItem from="1539844833290" duration="76000" />
       <workItem from="1539957014340" duration="12452000" />
       <workItem from="1540041739060" duration="22000" />
-      <workItem from="1577021585150" duration="601000" />
+      <workItem from="1577021585150" duration="10561000" />
     </task>
     <task id="LOCAL-00001" summary="Major Changes">
       <created>1539020506976</created>
@@ -186,7 +207,21 @@
       <option name="project" value="LOCAL" />
       <updated>1539964906295</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="movies CRUD added">
+      <created>1577022284038</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1577022284038</updated>
+    </task>
+    <task id="LOCAL-00007" summary="movies CRUD updated">
+      <created>1577026444956</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1577026444956</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,10 +241,14 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Major Changes" />
     <MESSAGE value="docker file removed" />
     <MESSAGE value="SQL File added" />
     <MESSAGE value="Major changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Major changes" />
+    <MESSAGE value="movies CRUD added" />
+    <MESSAGE value="movies CRUD updated" />
+    <MESSAGE value="links CRUD and other small changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="links CRUD and other small changes" />
   </component>
 </project>

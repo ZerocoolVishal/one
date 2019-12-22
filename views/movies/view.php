@@ -1,5 +1,6 @@
 <?php
 
+use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -24,6 +25,7 @@ $this->title = $model->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Create Links', ['movies/create-link', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -58,5 +60,28 @@ $this->title = $model->title;
             'timestamp',
         ],
     ]) ?>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'name',
+            'url:url',
+            'clicks',
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'buttons' => [
+
+                    'update' => function ($url, $model) {
+                        return Html::a('Update', ['links/update', 'id' => $model->id], ['class' => 'btn btn-sm btn-success']);
+                    },
+                    'delete' => function ($url, $model) {
+                        return Html::a('Delete', ['movies/delete-link', 'id' => $model->id], ['class' => 'btn btn-sm btn-danger', 'data' => ['confirm' => 'Are you sure you want to delete this link ?', 'method' => 'post']]);
+                    }
+                ]
+            ],
+        ],
+    ]); ?>
 
 </div>

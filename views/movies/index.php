@@ -27,9 +27,9 @@ $this->registerCss("
     }
 ");
 ?>
-<div class="content-index">
+<?= $this->render('../admin/components/_navbar') ?>
 
-    <?= $this->render('../admin/components/_navbar') ?>
+<div class="content-index mt-4">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -67,7 +67,11 @@ $this->registerCss("
                                 return Html::a('Update', ['movies/update', 'id' => $model->id]);
                             },
                             'delete' => function($url, $model) {
-                                return Html::a('Delete', ['movies/delete', 'id' => $model->id], ['data' => ['method' => 'POST']]);
+                                return Html::a('Delete', ['movies/delete', 'id' => $model->id], [
+                                        'data' => [
+                                            'confirm' => 'Are you sure you want to delete this item?',
+                                            'method' => 'post',
+                                        ],]);
                             }
                     ]
             ],

@@ -33,7 +33,7 @@ $this->registerCss("
 ");
 ?>
 
-<div class="col-sm-6 col-md-3 col-lg-2">
+<div class="col-sm-6 col-md-4 col-lg-3">
     <div class="card mb-4 content-card">
         <a data-toggle="collapse" href="#collapse<?=$movie->id?>">
             <img class="card-img-top" src="<?=$movie->image?>" alt="Card image cap">
@@ -53,8 +53,8 @@ $this->registerCss("
                     echo "<span class=\"badge badge-pill badge-secondary movie-tags\">$tag->name</span>";
                 };
                 ?>
-                <p class="card-text movie-description mt-1 mb-1"><?=$movie->description?></p>
-                <div class="mb-1 mt-1"><b>Download</b></div>
+                <p class="card-text movie-description mt-1 mb-1"><?= substr($movie->description, 0, 200) ?>...</p>
+                <!--<div class="mb-1 mt-1"><b>Download</b></div>-->
                 <div class="d-flex justify-content-between align-items-center mt-1">
                     <div class="btn-group mt-0">
                         <?php

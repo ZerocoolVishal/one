@@ -24,11 +24,20 @@
 
 <?= $this->render('components/_searchbox') ?>
 
-<?= $this->render('components/_languages') ?>
+    <div>
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            More Options
+        </a>
+    </div>
+    <div class="collapse" id="collapseExample">
+        <div class="">
+            <?= $this->render('components/_languages') ?>
 
-<?= $this->render('components/_categories') ?>
+            <?= $this->render('components/_categories') ?>
 
-<?= $this->render('components/_tags') ?>
+            <?= $this->render('components/_tags') ?>
+        </div>
+    </div>
 
 <nav class="mt-5">
   <ul class="pagination justify-content-center">
