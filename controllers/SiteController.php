@@ -14,7 +14,6 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Languages;
 use yii\data\Sort;
@@ -75,7 +74,7 @@ class SiteController extends Controller
     
     public function actionMovies()
     {
-        $size = 16;
+        $size = 12;
         $offset = 0;
         $page = 0;
 
@@ -99,14 +98,17 @@ class SiteController extends Controller
             }
         }
         //@TODO: Implement this part properly 
-        /*if(isset($req['tag'])) {
-            
-        }/*
+        if(isset($req['tag'])) {
 
-        /*else {
-            $data['movies'] = Content::find()->orderBy(['timestamp' => SORT_DESC])->all();
-        }*/
-        
+            $tag = $req['tag'];
+
+            $query = Content::find()->from('content c')
+                    ->innerJoin('contentTags ct', 'c.id = ct.content')
+                    ->innerJoin('tags t', 'ct.tag = c.id')
+                    ->where(['t.name' => $tag]);
+            
+        }
+
         if(isset($req['page'])) {
             $page = $req['page'];
             $offset = (int) $page * $size;

@@ -2,6 +2,8 @@
 
 /* @var $this yii\web\View */
 
+use yii\helpers\Html;
+
 $this->title = 'Home - prox download your entertainment';
 
 $categories = \app\models\Category::find()->all();
@@ -24,11 +26,16 @@ $categories = \app\models\Category::find()->all();
 
             echo "<div class='row' style='margin: 0px'>";
 
-                echo "<div class=\"category-title\"><h1>$category->name</h1></div>";
+                echo "<div class=\"category-title\"><h1>$category->name ";
+                echo Html::a('See All', ['site/movies', 'category' => $category->name], ['class' => 'btn btn-success']);
+                echo "</h1></div>";
                 echo "<div class=\"row\">";
 
+                $i = 0;
                 foreach ($category->contents as $movie) {
                     echo $this->render('components/_card', ['movie' => $movie]);
+                    $i++;
+                    if($i == 4) break;
                 }
                 echo "</div>";
 

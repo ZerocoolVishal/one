@@ -97,4 +97,10 @@ class Content extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Links::className(), ['content' => 'id']);
     }
+
+    public function getTags()
+    {
+        return $this->hasMany(Tag::className(), ['id' => 'tag'])
+                    ->viaTable('contentTags', ['content' => 'id']);
+    }
 }

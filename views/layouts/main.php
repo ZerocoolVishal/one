@@ -42,10 +42,10 @@ AppAsset::register($this);
             <div class="navbar-collapse collapse" id="navbars" style="">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <?=Html::a('Home', ['index'], ['class' => 'nav-link'])?>
+                        <?=Html::a('Home', ['site/'], ['class' => 'nav-link'])?>
                     </li>
                     <li class="nav-item">
-                        <?=Html::a('Movies & Series', ['movies'], ['class' => 'nav-link'])?>
+                        <?=Html::a('Movies & Series', ['site/movies'], ['class' => 'nav-link'])?>
                     </li>
                 </ul>
             </div>

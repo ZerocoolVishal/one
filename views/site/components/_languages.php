@@ -6,7 +6,6 @@
 ?>
 
 <div class="row mt-0 text-center bg-success">
-    <h3 class="p-3">Language :</h3>
     <?php foreach ($languages as $language) : ?>
     <div class="col">
         

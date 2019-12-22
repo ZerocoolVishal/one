@@ -28,36 +28,40 @@ $this->registerCss("
         </a>
         <div class="card-body">
             <!--<a class="btn btn-block text-dark" data-toggle="collapse" href="#collapse<?=$movie->id?>" role="button" aria-expanded="false" aria-controls="collapseExample">-->
-            <div class="card-title mt-0"><b><?=$movie->title?></b> <span class="text-muted">(<?= $movie->launchYear ?>)</span></div>
+            <div class="card-title mt-0 mb-0">
+                <b><?=$movie->title?></b><br>
+                <span class="text-muted">(<?= $movie->launchYear ?>)</span>
+            </div>
             <!--</a>-->
             <div class="collapse" id="collapse<?=$movie->id?>">
-                <span class="badge badge-light"><?=$movie->language->name?></span>
+                <span class="badge badge-light mt-1"><?=$movie->language->name?></span>
                 <?php
                 foreach ($movie->contentTags as $contentTag) {
                     $tag = $contentTag->tag0;
                     echo "<span class=\"badge badge-pill badge-secondary movie-tags\">$tag->name</span>";
                 };
                 ?>
-                <p class="card-text movie-description mt-2"><?=$movie->description?></p>
-            </div>
-            <div class="d-flex justify-content-between align-items-center mt-3">
-                <div class="btn-group">
-                    <?php
-                    foreach($movie->links as $link) {
-                        $url = $link->url;
-                        $name = $link->name;
+                <p class="card-text movie-description mt-1 mb-1"><?=$movie->description?></p>
+                <div class="mb-1 mt-1"><b>Download</b></div>
+                <div class="d-flex justify-content-between align-items-center mt-1">
+                    <div class="btn-group mt-0">
+                        <?php
+                        foreach($movie->links as $link) {
+                            $url = $link->url;
+                            $name = $link->name;
 
-                        if($name == "Trailer") {
-                            echo "<a class=\"btn btn-sm btn-outline-success\" onclick=\"linkckicked('".urlencode($url)."')\" href=\"$url\" target=\"_blank\">$name</a>";
-                            continue;
+                            if($name == "Trailer") {
+                                echo "<a class=\"btn btn-sm btn-outline-success\" onclick=\"linkckicked('".urlencode($url)."')\" href=\"$url\" target=\"_blank\">$name</a>";
+                                continue;
+                            }
+                            if($name == "Coming Soon") {
+                                echo "<button class=\"btn btn-sm btn-outline-secondary\">$name</button>";
+                                continue;
+                            }
+                            echo "<a class=\"btn btn-sm btn-outline-primary\" onclick=\"linkckicked('".urlencode($url)."')\" href=\"$url\" target=\"_blank\">$name</a>";
                         }
-                        if($name == "Coming Soon") {
-                            echo "<button class=\"btn btn-sm btn-outline-secondary\">$name</button>";
-                            continue;
-                        }
-                        echo "<a class=\"btn btn-sm btn-outline-primary\" onclick=\"linkckicked('".urlencode($url)."')\" href=\"$url\" target=\"_blank\">$name</a>";
-                    }
-                    ?>
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
