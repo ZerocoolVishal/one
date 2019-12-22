@@ -34,7 +34,9 @@ AppAsset::register($this);
 
     <header>
         <nav class="navbar navbar-expand-sm navbar-light">
-            <a class="navbar-brand" href="<?= Url::to(['site/']) ?>"><?= Yii::$app->name ?></a>
+            <a class="navbar-brand" href="<?= Url::to(['site/']) ?>">
+                <?= Html::img('@web/images/zerocool-logo.png', ['alt' => 'My logo', 'width' => '100px']) ?>
+            </a>
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -63,6 +65,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
+        <?= Html::img('@web/images/zerocool-logo.png', ['width' => '100px']) ?>
         <p class="pull-left">&copy; <?= Yii::$app->name ?> <?= date('Y')?>, Made with ☕ & ❤️</p>
     </div>
 </footer>

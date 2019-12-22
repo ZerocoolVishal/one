@@ -10,7 +10,7 @@ $categories = \app\models\Category::find()->all();
 ?>
 
 <div style="text-align: center;">
-    <h1 class="title"><?=Yii::$app->name?></h1>
+    <?= Html::img('@web/images/zerocool-logo.png', ['alt' => 'My logo', 'width' => '130px']) ?>
     <h4  class="text-muted">HD Movies & Series at smallest file size 👻</h4>
     <hr width="200px">
 </div>
