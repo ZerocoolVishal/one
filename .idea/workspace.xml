@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62894819-5647-4fb1-9073-782438d6a3db" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/LinksController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/links/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/links/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/links/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/links/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/links/view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/MoviesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/MoviesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/admin/components/_navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/components/_navbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/admin/stats.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/stats.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/movies/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/movies/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/movies/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/movies/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/components/_card.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/components/_card.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/components/_categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/components/_categories.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/components/_languages.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/components/_languages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/components/_tags.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/components/_tags.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/movies.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/movies.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/main.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +154,8 @@
       <workItem from="1539844833290" duration="76000" />
       <workItem from="1539957014340" duration="12452000" />
       <workItem from="1540041739060" duration="22000" />
-      <workItem from="1577021585150" duration="10561000" />
+      <workItem from="1577021585150" duration="11315000" />
+      <workItem from="1577040015241" duration="913000" />
     </task>
     <task id="LOCAL-00001" summary="Major Changes">
       <created>1539020506976</created>
@@ -221,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577026444956</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="links CRUD and other small changes">
+      <created>1577037027109</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1577037027109</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

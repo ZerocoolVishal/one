@@ -12,6 +12,31 @@ use app\assets\AppAsset;
 use yii\helpers\Url;
 
 AppAsset::register($this);
+
+$this->registerCss("
+
+    body {
+        background-color: black;
+        color: white;
+    }
+    .card {
+        background-color: black;
+        color: white;
+    }
+    
+    .form-control {
+        background-color: black;
+    }
+    
+    .nav-link {
+        color: white !important;
+    }
+    
+    .page-link {
+        background-color: black !important;
+    }
+
+");
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -35,7 +60,9 @@ AppAsset::register($this);
     <header>
         <nav class="navbar navbar-expand-sm navbar-light">
             <a class="navbar-brand" href="<?= Url::to(['site/']) ?>">
+                <?php if(Yii::$app->controller->action->id != 'index'): ?>
                 <?= Html::img('@web/images/zerocool-logo.png', ['alt' => 'My logo', 'width' => '100px']) ?>
+                <?php endif; ?>
             </a>
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
