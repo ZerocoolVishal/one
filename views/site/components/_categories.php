@@ -13,9 +13,9 @@ $categories = Category::find()->all();
 
 ?>
 
-<div class="row mt-0 text-center bg-dark" style="padding: 40px">
+<div class="row mt-0 text-center bg-dark justify-content-md-center p-3">
     <?php foreach ($categories as $category) : ?>
-    <div class="col">
+    <div class="col col-md-2">
         
         <?= Html::a($category->name, ['site/movies', 'category' => $category->name], 
         $options = [

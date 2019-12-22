@@ -18,10 +18,22 @@ $this->registerCss("
     .content-card img {
         border-radius: 10px 10px 0px 0px;
     }
+
+    .year {
+        font-size: x-small;    
+    }
+
+    .movie-description {
+        font-size: small;    
+    }
+
+    .action-btn {
+        font-size: 10px;    
+    }
 ");
 ?>
 
-<div class="col-sm-6 col-md-4 col-lg-3">
+<div class="col-sm-6 col-md-3 col-lg-2">
     <div class="card mb-4 content-card">
         <a data-toggle="collapse" href="#collapse<?=$movie->id?>">
             <img class="card-img-top" src="<?=$movie->image?>" alt="Card image cap">
@@ -30,11 +42,11 @@ $this->registerCss("
             <!--<a class="btn btn-block text-dark" data-toggle="collapse" href="#collapse<?=$movie->id?>" role="button" aria-expanded="false" aria-controls="collapseExample">-->
             <div class="card-title mt-0 mb-0">
                 <b><?=$movie->title?></b><br>
-                <span class="text-muted">(<?= $movie->launchYear ?>)</span>
+                <span class="text-muted year mt-0 pt-0">(<?= $movie->launchYear ?>)</span>
+                <span class="badge badge-light mt-1"><?=$movie->language->name?></span>
             </div>
             <!--</a>-->
             <div class="collapse" id="collapse<?=$movie->id?>">
-                <span class="badge badge-light mt-1"><?=$movie->language->name?></span>
                 <?php
                 foreach ($movie->contentTags as $contentTag) {
                     $tag = $contentTag->tag0;
@@ -51,14 +63,14 @@ $this->registerCss("
                             $name = $link->name;
 
                             if($name == "Trailer") {
-                                echo "<a class=\"btn btn-sm btn-outline-success\" onclick=\"linkckicked('".urlencode($url)."')\" href=\"$url\" target=\"_blank\">$name</a>";
+                                echo "<a class=\"btn action-btn btn-sm btn-outline-success\" onclick=\"linkckicked('".urlencode($url)."')\" href=\"$url\" target=\"_blank\">$name</a>";
                                 continue;
                             }
                             if($name == "Coming Soon") {
-                                echo "<button class=\"btn btn-sm btn-outline-secondary\">$name</button>";
+                                echo "<button class=\"btn action-btn btn-sm btn-outline-secondary\">$name</button>";
                                 continue;
                             }
-                            echo "<a class=\"btn btn-sm btn-outline-primary\" onclick=\"linkckicked('".urlencode($url)."')\" href=\"$url\" target=\"_blank\">$name</a>";
+                            echo "<a class=\"btn btn-sm action-btn btn-outline-primary\" onclick=\"linkckicked('".urlencode($url)."')\" href=\"$url\" target=\"_blank\">$name</a>";
                         }
                         ?>
                     </div>

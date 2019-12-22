@@ -52,21 +52,20 @@
   </ul>
 </nav>
 
-<div class="row movies-row mt-5">
 
     <?php
     if($movies) {
+        echo "<div class='row movies-row mt-5'>";
         foreach ($movies as $movie) {
             echo $this->context->renderPartial('components/_card', ['movie' => $movie]);
         }
+        echo "</div>";
     }
     else {
         echo "<h1>Sorry!! Not available 😞</h1>";
         echo \yii\helpers\Html::a('See what we have', ['movies']);
     }
     ?>
-
-</div>
 
 <nav class="mt-5">
   <ul class="pagination justify-content-center">

@@ -5,9 +5,9 @@
     $languages = app\models\Languages::find()->all();
 ?>
 
-<div class="row mt-0 text-center bg-success">
+<div class="row mt-0 text-center justify-content-md-center" style="background-color: #E8299D;">
     <?php foreach ($languages as $language) : ?>
-    <div class="col">
+    <div class="col col-md-2">
         
         <?= Html::a($language->name, ['site/movies', 'lang' => $language->name], 
         $options = [
